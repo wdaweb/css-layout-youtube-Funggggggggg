@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+      <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="./css/all.css">
+      <style>
+            .cursorPointer {
+                  cursor: pointer;
+            }
+            * {
+                  box-sizing: border-box;
+                  margin: 0;
+                  padding: 0;
+            }
+            body {
+                  background: white;
+                  width: 100vw;
+                  height: 100vh;
+            }
+            #ytIcon {
+                  line-height: 55px;
+            }
+            #ytIcon img{
+                  text-align: center;
+            }
+            
+            #top{
+                  width: 100vw;
+                  height: 55px; /* 高固定 */
+                  vertical-align: middle;
+                  /* overflow: hidden 強制讓父容器包含所有浮動子元素。 */
+                  overflow: hidden;
+                  /* background: deeppink; */
+                  font-family: "Oswald", sans-serif;
+            }
+            #top table {
+                  margin: auto;
+                  width: 98vw;
+                  height: 55px;
+                  /* background: greenyellow; */
+            }
+            #top td{
+                  vertical-align: middle;
+                  height: 55px;
+            }
+
+            #top td:nth-child(1) {
+                  width: 25%;
+                  /* background: red; */
+            }
+            #top td:nth-child(2) {
+                  width: 50%;
+                  text-align: center;
+                  /* background: blue; */
+            }
+            #top td:nth-child(3) {
+                  width: 25%;
+            }
+            #top td:nth-child(3) img {
+                  float: right;
+                  height: 40px;
+                  /* background: khaki; */
+            }
+            
+            #search{
+                  width: 40vw;
+                  height: 40px;
+                  float: left;
+                  border: 1px solid #333;
+                  border-radius: 25px;
+                  background: linear-gradient(90deg, transparent 0%, transparent 92%, #eee 92%, #eee 100%);
+                  text-align: right;
+            }
+            
+            #search input:first-of-type {
+                  width: 92%;
+                  height: 40px;
+                  float: left;
+                  padding-left: 10px;
+                  border: 0px;
+                  outline: none;
+                  border-radius: 25px 0px 0px 25px ;
+                  background: transparent;
+                  /* background: darkseagreen; */
+            }
+            #search  input[type=text]:hover {
+                  box-shadow: inset 1px 1px 5px #bbb;
+            }
+            
+            #search button{
+                  border-radius:  0px 25px 25px 0px ;
+                  height: 40px;
+                  width: 8%;
+                  float: right;
+                  border: 0px;
+                  outline: none;
+                  cursor: pointer;
+                  z-index: 3;
+            }
+            #search img {
+                  z-index: 2;
+            }
+            #microBg {
+                  width: 40px;
+                  height: 40px;
+                  right: 90px;
+                  float: right;
+                  border-radius: 50%;
+                  position:relative;
+                  background:rgba(0, 0, 0, 0.1);
+            }
+            
+            #bard{
+                  width: 80px; /* 寬度固定 */
+                  height: 100vh;
+                  float: left;
+                  text-align: center;
+                  position: fixed;
+                  z-index: 4;
+                  background: white;
+                  /* background: deepskyblue; */
+            }
+            #bard table{
+                  width: 100%;
+                  padding: 10px;
+            }
+            #bard td {
+                  text-align: center;
+                  font-size: 10px;
+                  padding-bottom: 10px;
+            }
+            #bardSeconed {
+                  width: 250px; /* 寬度固定 */
+                  height: 100vh;
+                  float: left;
+                  text-align: left;
+                  font-size: 14px;
+                  position: fixed;
+                  overflow: scroll;
+                  background: white;
+                  padding: 20px;
+                  z-index: 5;
+                  display: none;
+            }
+            #bardSeconed p {
+                  margin:  5px 0px;
+                  height: 40px;
+                  cursor: pointer;
+                  /* background: deeppink; */
+            }
+            #bardSeconed i {
+                  text-align: center;
+                  width: 30px;
+                  margin-top: 20px;
+                  margin-right: 15px;
+            }
+            #bardSeconed hr {
+                  margin: 5px 0px;
+            }
+            #bardSeconed span {
+                  vertical-align: middle;
+            }
+            .bardSeconed_3 span{
+                  line-height: 20px;
+            }
+            .other {
+                  font-size: 18px;
+                  line-height: 45px;
+            }
+            #logIn {
+                  width: 45%;
+                  color:rgb(0, 90, 255);
+                  border-radius: 25px;
+                  border: 1.5px solid #eee;
+                  text-align: center;
+            }
+            
+            #wrap{
+                  /* width: 100vw; */
+                  width: calc(100% - 80px); /* 相對於左邊固定做彈性 */
+                  height:calc(100vh - 55px);
+                  /* overflow: hidden; */
+                  padding: 10px;
+                  float: right;
+                  overflow: hidden;
+                  /* background: lightpink; */
+            }
+            #filter{
+                  height: 50px;/* 高固定 */
+                  position: fixed;
+                  margin-top: 10px;
+                  /* background: darkturquoise; */
+            }
+            #filter span {
+                  margin: 5px;
+                  line-height: 50px;
+                  font-size: 14px;
+                  border-radius: 5px;
+                  background: #eee;
+                  padding: 5px;
+                  cursor: pointer;
+            }
+            #filter span:hover {
+                  background: #ddd;
+            }
+            #filter span:active {
+                  background: #333;
+                  color: white;
+            }
+            #video_option{
+                  /* 圖片用 js 往下延伸 */
+                  width:100%;
+                  height:calc(100% - 50px);
+                  margin-top: 60px;
+                  vertical-align: text-top;
+                  overflow: scroll;
+                  /* text-align: center; */
+                  /* background: darkseagreen; */
+            }
+            #video_option div {
+                  display: inline;
+                  width: 320px;
+                  height: 240px;
+                  float: left;
+                  margin: 5px;
+                  /* background-color: deepskyblue; */
+            }
+            #video_option img {
+                  width: 320px;
+                  /* background: lightgreen; */
+            }
+            img{
+                  width: 42px;
+                  padding: 10px;
+                  vertical-align: middle;
+            }
+      </style>
+</head>
+<body>
+      <div id="top">
+                  <table>
+                        <tr>
+                              <td>
+                                    <span>
+                                          <img id="open" class="cursorPointer" src="./icon_img/menu.png">
+                                    </span>
+                                    <a style="text-decoration: none; color: #000;" href="https://www.youtube.com/results?search_query=music">
+                                          <span id="ytIcon">
+                                                <img src="./icon_img/youtube.png" style="width: 55px;">
+                                                <span style="font-size: 20px;">YouTube</span>
+                                                <sup style="font-size: 10px;">TW</sup>
+                                          </span>
+                                    </a>
+                              </td>
+                              <td>
+                                    <form>
+                                          <div id="search">
+                                                <input type="text" name="serch" placeholder="查詢">
+                                                <button  type="submit">
+                                                      <img src="./icon_img/search.png">
+                                                </button>
+                                          </div>
+                                    </form>
+                                    <div id="microBg">
+                                          <a href="#">
+                                                <img src="./icon_img/microphone.png">
+                                          </a>
+                                    </div>
+                              </td>
+                              <td>
+                                    <img class="cursorPointer" src="./icon_img/user0.png">
+                                    <img class="cursorPointer" src="./icon_img/bell.png">
+                                    <img class="cursorPointer" src="./icon_img/video-camera.png">
+                        </tr>
+                  </table>
+      </div>
+      <div id="bard">
+            <table>
+                  <tr>
+                        <td class="cursorPointer">
+                              <img src="./icon_img/house-black-silhouette-without-door.png">
+                              <p>首頁</p>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td class="cursorPointer">
+                              <img src="./icon_img/play.png">
+                              <p>Short</p>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td class="cursorPointer">
+                              <img src="./icon_img/youtube (1).png">
+                              <p>訂閱內容</p>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td class="cursorPointer">
+                              <img src="./icon_img/user.png">
+                              <p>個人中心</p>
+                        </td>
+                  </tr>
+                  <tr>
+                        <td class="cursorPointer">
+                              <img src="./icon_img/historical.png">
+                              <p>觀看紀錄</p>
+                        </td>
+                  </tr>
+            </table>
+      </div>
+      <div id="bardSeconed">
+            <div class="bardSeconed_1">
+                  <p>
+                        <i class="fa-solid fa-house fa-xl"></i>
+                        <span>首頁</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-brands fa-square-youtube"></i>
+                        <span>shorts</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-brands fa-youtube" style="color: #999;"></i>
+                        <span>訂閱內容</span>
+                  </p>
+            </div>
+            <hr>
+            <div class="bardSeconed_2">
+                  <p>
+                        <i class=" fa-xl fa-regular fa-circle-user" style="color: #000000;"></i>
+                        <span>個人中心 > </span> 
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-clock-rotate-left"></i>
+                        <span>觀看紀錄</span>
+                  </p>
+            </div>
+            <hr>
+            <div class="bardSeconed_3">
+                  <span>登入帳戶即可對影片表示喜歡、發布留言及訂閱頻道。</span>
+                  <p id="logIn">
+                        <i style="margin-right: 0px" class=" fa-xl fa-regular fa-circle-user" style="color:rgb(0, 90, 255)"></i>
+                        <span style="line-height: 100%;">登入</span>
+                  </p>
+            </div>
+            <hr>
+            <div class="bardSeconed_4">
+                  <p class="other">探索</p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-fire"></i>
+                        <span>發燒影片</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-music"></i>
+                        <span>音樂</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-clapperboard"></i>
+                        <span>電影</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-microphone-lines"></i>
+                        <span>直播</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-gamepad"></i>
+                        <span>遊戲</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-regular fa-newspaper"></i>
+                        <span>新聞</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-trophy"></i>
+                        <span>體育</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-regular fa-lightbulb"></i>
+                        <span>課程</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-podcast"></i>
+                        <span>Podcast</span>
+                  </p>
+            </div>
+            <hr>
+            <div class="bardSeconed_5">
+                  <p class="other">更多 YouTube 功能</p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-circle-play"></i>
+                        <span>YouTube Premium</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-brands fa-square-youtube" style="color: #999"></i>
+                        <span>YouTube Music</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-regular fa-circle-play"></i>
+                        <span>YouTube Kids</span>
+                  </p>
+            </div>
+            <hr>
+            <div class="bardSeconed_6">
+                  <p>
+                        <i class=" fa-xl fa-solid fa-gear"></i>
+                        <span>設定</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-regular fa-flag"></i>
+                        <span>檢舉紀錄</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-question"></i>
+                        <span>說明</span>
+                  </p>
+                  <p>
+                        <i class=" fa-xl fa-solid fa-exclamation"></i>
+                        <span>提供意見</span>
+                  </p>
+            </div>
+            <hr>
+            <div class="bardSeconed_7">
+                  <span>簡介 媒體 著作權 與我們聯絡 創作者 廣告 開發人員</span>
+                  <span>條款 隱私權 政策與安全性 YouTube 運作方式 測試新功能</span>
+                  <p>© 2024 Google LLC</p>
+            </div>
+      </div>
+      <div id="wrap">
+            <div id="filter">
+                        <span>全部</span>
+                        <span>音樂</span>
+                        <span>合輯</span>
+                        <span>新聞</span>
+                        <span>遊戲</span>
+                        <span>直播中</span>
+                        <span>動畫</span>
+                        <span>最新上傳</span>
+                        <span>已觀看</span>
+                        <span>令人耳目一新</span>
+            </div>
+            <div id="video_option">
+                        <div>
+                              <a href="">
+                                    <img src="https://i.ytimg.com/vi/7HgJIAUtICU/hqdefault.jpg?sqp=-oaymwExCOADEI4CSFryq4qpAyMIARUAAIhCGAHwAQH4Af4JgALQBYoCDAgAEAEYfyAnKCcwDw==&rs=AOn4CLBhO7AFbYNYhhKMSaPhZ53ImhHvDg">
+                              </a>
+                              <h4>合輯 - 踊り子 / Vaundy：MUSIC VIDEO</h4>
+                              <span>Vaundy和其他藝人</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=RJUvNVCqtpI">
+                                          <img src="https://i.ytimg.com/vi/RJUvNVCqtpI/hq720.jpg?sqp=-oaymwE2CNAFEJQDSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARgrIFcocjAP&rs=AOn4CLDAWekU2FgS6kFrCoLkhMEVb1942Q">
+                                    </a>
+                                    <h4>(a). sip</h4>
+                                    <span>what is ?</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=rnIKWRpVXOo">
+                                          <img src="https://i.ytimg.com/vi/rnIKWRpVXOo/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDmWkBArhmKOIUSthS0Y8rgSmBaxQ">
+                                    </a>
+                                    <h4>|𝘿𝙤𝙪𝙭𝙘𝙤𝙞𝙣𝙜𝙗𝙡𝙚𝙪| 布魯諾咖啡店</h4>
+                                    <span>돌콩블루</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=VjPoY-LXbx0">
+                                          <img src="https://i.ytimg.com/vi/VjPoY-LXbx0/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCsCB2NazXU7VZXWao-ikWKpjTbiQ">
+                                    </a>
+                                    <h4>Relaxing 1980s City Lofi Mix for Study & Work｜Smooth Beats for a...</h4>
+                                    <span>Lofi (...)</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=rGyQHyDMZZI">
+                                          <img src="https://i.ytimg.com/vi/rGyQHyDMZZI/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLASQF6bPEvhHAGs1IAdI9uiO49rOw">
+                                    </a>
+                                    <h4>Fujii Kaze: Tiny Desk Concerts JAPAN</h4>
+                                    <span>NPR Music</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=FjYDqGxzz9Q&ab_channel=Muse%E6%9C%A8%E6%A3%89%E8%8A%B1-TW">
+                                    <img src="https://i.ytimg.com/vi/FjYDqGxzz9Q/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLB1OWiq4HMWG6D1Fa0l3NlYOZH6Rw">
+                              </a>
+                              <h4>膽大黨 第08話【總覺得心裡有疙瘩】｜Muse木棉花 動畫 線上看</h4>
+                              <span>Muse木棉花-TW</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=vp_c9LbucdY&ab_channel=%E3%81%86%E3%81%90%E3%81%84%E3%81%99%E3%83%86%E3%83%B3%E3%83%88WoogwissTENT">
+                                    <img src="https://i.ytimg.com/vi/vp_c9LbucdY/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBu8kNGbzrYL0eiuyWZDYTuOfVQLw">
+                              </a>
+                              <h4>[雪地露營] 極寒湖畔的日本小卡車露營車</h4>
+                              <span>うぐいすテント WoogwissTENT</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=vuKlqoQnz5I&t=881s&ab_channel=%E8%80%81%E9%AB%98%E8%88%87%E5%B0%8F%E8%8C%89Mr%26MrsGao">
+                                    <img src="https://i.ytimg.com/vi/vuKlqoQnz5I/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDapb-YoNT_7V-mQAZOlk671bTUyA">
+                              </a>
+                              <h4>霍金離世前留下一個可怕的預言 | 老高與小茉 Mr & Mrs Gao </h4>
+                              <span>老高與小茉 Mr & Mrs Gao</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=WupQa7HYTWQ&ab_channel=%E7%B6%9C%E5%8F%A3%E5%91%B3%E5%A8%9B%E6%A8%82">
+                                    <img src="https://i.ytimg.com/vi/WupQa7HYTWQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCECk_WDgV2xbEml2FzkHxgR72Gdw">
+                              </a>
+                              <h4>【綜口味】30歲後才懂的人生道理 #綜口味開房間 EP.781 </h4>
+                              <span>綜口味娛樂</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=3wzDlIXdSEU&ab_channel=%E7%B7%AF%E4%BE%86%E6%97%A5%E6%9C%AC%E5%8F%B0">
+                                    <img src="https://i.ytimg.com/vi/3wzDlIXdSEU/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBV68uq9KHHwuI_UZ08LHRAnaPtXw">
+                              </a>
+                              <h4>《住宅改造王》改造！擁有150坪雜草庭院的家｜緯來日本台</h4>
+                              <span>緯來日本台</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=LEwi44cWBu8&t=2684s&ab_channel=CodeShiba%E7%A8%8B%E5%BC%8F%E6%9F%B4">
+                                    <img src="https://i.ytimg.com/vi/LEwi44cWBu8/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD0cgab-NU5y4yWL8AXgPlwOzfw0A">
+                              </a>
+                              <h4>【 JavaScript 】 6 小時初學者課程 #javascript教學 #javascript入門 #js</h4>
+                              <span>CodeShiba 程式柴</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=VmOvUsOXVrk&ab_channel=RelaxingGhibliPiano">
+                                    <img src="https://i.ytimg.com/vi/VmOvUsOXVrk/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAmvlySt_dTnILFS6pVitbMUgd2ZQ">
+                              </a>
+                              <h4>Ghibli Chill🌊 Studying, coffee, reading, healing 🎧 Ghibli Music </h4>
+                              <span>Relaxing Ghibli Piano </span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=dO-yd_KrW-I&ab_channel=ArtisticFlair7">
+                                    <img src="https://i.ytimg.com/vi/dO-yd_KrW-I/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAE80w5ySLib_IQOpwxE9kKJsSW3A">
+                              </a>
+                              <h4>Cute mushroom painting with himi jelly gouache / 112 colors / paint with me 🎨 / unboxing washi tapes</h4>
+                              <span>Artistic Flair7</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=jpuiMqZaUz4&ab_channel=EssenRecipes">
+                                    <img src="https://i.ytimg.com/vi/jpuiMqZaUz4/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBWoF4QTOCPLahU-oTqrLI7MWqUVw">
+                              </a>
+                              <h4>最美味的法式鸡肉食谱！试试这样做！🔝 3 道简单又美味的食谱 </h4>
+                              <span>Essen Recipes</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=uMoqQApWqGQ&ab_channel=empty.">
+                                    <img src="https://i.ytimg.com/vi/uMoqQApWqGQ/hq720.jpg?sqp=-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDsLevM5ti-reBXUiJegOT0vMNSJw">
+                              </a>
+                              <h4>forget everything and relax. </h4>
+                              <span>empty.</span>
+                        </div>
+                        <div>
+                              <a href="https://www.youtube.com/watch?v=b3ckHYQdQ0g&ab_channel=%E6%9D%B1%E6%A3%AE%E6%96%B0%E8%81%9ECH51">
+                                    <img src="https://i.ytimg.com/vi/b3ckHYQdQ0g/hq720.jpg?v=6741741c&sqp=COzzhboG-oaymwEcCNAFEJQDSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLC0uNMMTAbHcOCNJN5QqotNf_4e-A">
+                              </a>
+                              <h4>東森新聞 CH51</h4>
+                              <span>4965 人正在觀看</span>
+                        </div>
+            </div>
+      </div>
+      <script>
+            const openEl = document.getElementById('open')
+            const bardSeconedEl = document.getElementById('bardSeconed')
+            openEl.addEventListener('click',function () {
+                  if(bardSeconedEl.style.display === 'none' || !bardSeconedEl.style.display){
+                        bardSeconedEl.style.display ='block'
+                  }else{
+                        bardSeconedEl.style.display = 'none'
+                  }
+            })
+
+            const filterEl = document.getElementById('filter')
+            // filterEl.addEventListener('click',function () {
+            //       if(filterEl.span.style.)
+
+            // })
+      </script>
+</body>
+</html>
